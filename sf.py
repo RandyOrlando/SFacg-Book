@@ -219,7 +219,7 @@ if os.path.exists('cookie.ini') == True:
         cookie=f.read()
 if os.path.exists('cookie.ini') == False:
     with open('cookie.ini','w')as f:
-        cookie=input("未检测到cookie，请输入cookie：")
+        cookie=input("未检测到cookie\ncookie为sf网站下的.SFCommunity一项的值\n请输入cookie：")
         f.write(cookie)
     
 tj = "ww"
