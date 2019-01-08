@@ -3,7 +3,7 @@
 
 ## 开始使用
 
- 1.安装python：在官网python.org下载(Python2或Python3皆可)
+ 1.安装python：在官网python.org下载Python3
 
  2.运行pip install requests pillow
  
