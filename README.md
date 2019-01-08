@@ -11,15 +11,6 @@
 
  2.运行pip install requests pillow
  
- 3.在ini.py里配置.SFCommunit的cookie并保存
+ 3.运行Python3 sf.py
  
- 4.如下载的是Python2运行python sf2.py
- 如下载的是Python3运行sf3.py
- 
-## 注意事项
-
-1.Python2版本在Windows下运行可能会有点问题,需要改编码:运行:chcp 65001
-
-## 其他
-
-目前图片显示用的是PIL,期末考后我会把他图片显示整合进来.
+ 4.在自动生成的cookie.ini输入cookie
