@@ -111,7 +111,6 @@ def sfvip(url,cookie):
     import urllib
     import re
     import requests
-    import PIL,PIL.Image
     from requests.cookies import RequestsCookieJar
 # encoding=utf8 
     jar=RequestsCookieJar()
