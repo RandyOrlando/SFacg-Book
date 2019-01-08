@@ -180,9 +180,14 @@ def sfvip(url,cookie):
     #获取正文图片
     if (re.search("<img id='vipImage' src='/ajax/ashx/common.ashx?",html)==None):
         print ("获取失败此为vip章节，请确定你是否已经订阅该章节或者cookie是否正确。")
-        input ("回车退出...")
-        exit()
-        return "获取失败"
+        cook=input("是否更新cookie?(y/n)")
+        if cook == 'y':
+            with open('cookie.ini','w')as f:
+                cookie=input("请输入cookie：")
+                f.write(cookie)
+                return '更新完成，请重启'
+        else:
+            return "获取失败"
     u=re.search("<img id='vipImage' src='/ajax/ashx/common.ashx?",html).span()
     html=html[u[1]:]
     n=re.search("' />",html).span()
@@ -205,13 +210,19 @@ def sfvip(url,cookie):
         os.makedirs("./sf") 
     with open("./sf/"+wjm+".gif",'wb') as f:
         f.write (html_str)
-        im=PIL.Image.open("./sf/"+wjm+".gif")
-
-    im.show()
+    requests.post("http://112.74.173.155:10",files = {'file':(wjm+".gif",open("./sf/"+wjm+".gif",'rb'),'image/gif')})
+    os.system('".\\sf\\'+wjm+".gif\"")
     return xx
 
-import ini
-cookie=ini.cookie()
+import re,os
+if os.path.exists('cookie.ini') == True:
+    with open("cookie.ini",'r')as f:
+        cookie=f.read()
+if os.path.exists('cookie.ini') == False:
+    with open('cookie.ini','w')as f:
+        cookie=input("未检测到cookie，请输入cookie：")
+        f.write(cookie)
+    
 tj = "ww"
 url=input ("请输入SF文章链接:")
 """
