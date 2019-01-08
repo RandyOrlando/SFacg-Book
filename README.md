@@ -7,8 +7,9 @@
 
  1.安装python：在官网python.org下载Python3
 
- 2.运行pip install requests pillow
+ 2.运行pip install requests
  
  3.运行Python3 sf.py
  
- 4.在自动生成的cookie.ini输入cookie
+ ## 注意事项
+ 1.请勿手动编辑cookie.ini如需更改,将cookie.ini删除运行sf.py输入即可
