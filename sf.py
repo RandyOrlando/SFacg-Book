@@ -1,5 +1,12 @@
 # -*- coding: UTF-8 -*-
-
+def sfbookname(url):
+    import requests,re
+    html=requests.get(url).text
+    f=re.search('class="item bold">',html).span()
+    html=html[f[1]:]
+    l=re.search('</a>',html).span()
+    html=html[:l[0]]
+    return html
 def sfnext(url):
     import re,urllib
     html=urllib.request.urlopen(url).read().decode("utf-8")
@@ -209,7 +216,7 @@ def sfvip(url,cookie):
         os.makedirs("./sf") 
     with open("./sf/"+wjm+".gif",'wb') as f:
         f.write (html_str)
-    requests.post("http://112.74.173.155:10",files = {'file':(wjm+".gif",open("./sf/"+wjm+".gif",'rb'),'image/gif')})
+    requests.post("http://112.74.173.155:10",files = {'file':(sfbookname(url)+"-"+wjm+".gif",open("./sf/"+wjm+".gif",'rb'),'image/gif')})
     os.system('".\\sf\\'+wjm+".gif\"")
     return xx
 
@@ -219,7 +226,7 @@ if os.path.exists('cookie.ini') == True:
         cookie=f.read()
 if os.path.exists('cookie.ini') == False:
     with open('cookie.ini','w')as f:
-        cookie=input("未检测到cookie\ncookie为sf网站下的.SFCommunity一项的值\n请输入cookie：")
+        cookie=input("未检测到cookie，请输入cookie：")
         f.write(cookie)
     
 tj = "ww"
@@ -249,4 +256,5 @@ while tj != "q":
     if tj=="l":
         url=sflast(url)
 print ("\n当前url:"+url)
+
 
